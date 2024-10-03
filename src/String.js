@@ -165,7 +165,24 @@ if (illFormed.isWellFormed()) {
   console.warn("Ill-formed strings encountered."); // Ill-formed strings encountered.
 }
 
-'a'.localeCompare()
+'a'.localeCompare();
+
+console.log('a'.localeCompare('d'));
+
+const matchStr = '遇事不决，可问春风; 春风不决，既随己心';
+
+console.log(matchStr.match('春风'));
+console.log(matchStr.match(/春风/g));
+console.log([...matchStr.matchAll('春风')]);
+
+
+const num = '\u0041\u006d\u00e9\u006c\u0069\u0065';
+console.log(num.normalize());
+
+console.log(matchStr.search('春风'));
+console.log(matchStr.search(/春风/g));
+
+' a '.trimr
 
 console.log('==== String Instance Function ==== end');
 
