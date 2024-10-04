@@ -182,9 +182,59 @@ console.log(num.normalize());
 console.log(matchStr.search('春风'));
 console.log(matchStr.search(/春风/g));
 
-' a '.trimr
+const padString = '好';
+console.log(padString, padString.padStart(2, '你'));
+
 
 console.log('==== String Instance Function ==== end');
+
+
+console.log('==== Manacher ====');
+const s = 'ababbabc';
+
+function Manacher(s) {
+  if (s.length < 2) return;
+
+  let start = 0, maxLen = 1;
+
+  let padStr = '#';
+  for (let i = 0; i < s.length; i++) {
+    padStr += s[i] + '#';
+  }
+
+  let p = new Array(padStr.length).fill(0);
+
+  for (let i = 0, center = 0, right = 0; i < padStr.length; i++) {
+
+    if (i < right) {
+      p[i] = Math.min(right - i, p[2 * center - i]);
+    }
+
+    while (i - p[i] - 1 >= 0 && i + p[i] + 1 < padStr.length && padStr[i - p[i] - 1] === padStr[i + p[i] + 1]) {
+      p[i]++;
+    }
+
+    if (i + p[i] > right) {
+      center = i;
+      right = i + p[i];
+    }
+
+    if (p[i] > maxLen) {
+      maxLen = p[i];
+      start = (i - maxLen) / 2;
+    }
+  }
+
+  return s.substring(start, start + maxLen);
+}
+
+console.log(`字符串：${s}, 最长回文子串长度为 ${Manacher(s)}`);
+
+console.log('==== Manacher ==== end');
+
+
+
+
 
 
 
