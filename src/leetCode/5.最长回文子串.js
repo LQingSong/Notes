@@ -10,7 +10,7 @@
  * @return {string}
  */
 var longestPalindrome = function (s) {
-  if (s.length < 2) return;
+  if (s.length < 2) return s;
 
   let start = 0, maxLen = 1;
 
@@ -82,7 +82,6 @@ var longestPalindrome = function (s) {
   }
   // 根据 start 和 maxLen，从原始字符串 s 中截取并返回最长回文串。
   return s.substring(start, start + maxLen);
-
 };
 // @lc code=end
 
