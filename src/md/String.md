@@ -99,7 +99,7 @@ console.log(String.fromCodePoint("a".codePointAt(0))); // a
 
 #### 总结
 
-字符 与 Unicode 码互转，记住两个方法即可
+<b>字符 与 Unicode 码互转，记住两个方法即可</b>
 
 ```js
 String.fromCodePoint(97); // a
